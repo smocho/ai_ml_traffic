@@ -163,7 +163,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
-            tt++
+            tt+=1
         lh=[]
         lv=[]
         for i in range(len(lht[0][0])):
@@ -331,7 +331,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
-            tt++
+            tt+=1
         lh=[]
         lv=[]
         for i in range(len(lht[0][0])):
@@ -499,7 +499,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
-            tt++
+            tt+=1
         lh=[]
         lv=[]
         for i in range(len(lht[0][0])):
@@ -667,7 +667,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
-            tt++
+            tt+=1
         lh=[]
         lv=[]
         for i in range(len(lht[0][0])):
@@ -714,7 +714,7 @@ while True:
         Predict(lh,lv,xs,ys,xd,yd)
         t+=int(m.fabs(xd-xs))+int(m.fabs(yd-ys))+1
     else:
-        t++
+        t+=1
     b=input('Do you want to terminate the system? (Y/N) ')
     if b=='Y' or b=='y':
         break
