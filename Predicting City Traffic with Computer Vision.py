@@ -2,8 +2,8 @@ import math as m
 import tensorflow as tf
 import numpy as np
 from tensorflow import keras
-lh=[]
-lv=[]
+lh=[[],[]]
+lv=[[],[]]
 t=1
 def Round(f):
     if f-m.floor(f)<0.5:
@@ -29,24 +29,24 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(10):
                 lv1.append([])
             lvt.append(lv1)
-        for i in lh:
+        for i in lh[0]:
             for j in range(11):
                 for k in range(10):
                     lht[j][k].append(i[j][k])
-        for i in lv:
+        for i in lv[0]:
             for j in range(11):
                 for k in range(10):
                     lvt[j][k].append(i[j][k])
         h1=[]
         v1=[]
-        for i in range(len(lh)):
+        for i in range(len(lh[0])):
             h1.append(i)
-        for i in range(len(lv)):
+        for i in range(len(lv[0])):
             v1.append(i)
         xc=xs
         yc=ys
         dr=[]
-        tt=len(lh)+1
+        tt=len(lh[0])+1
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -164,26 +164,26 @@ def Predict(lh,lv,xs,ys,xd,yd):
             h1.append(tt-1)
             v1.append(tt-1)
             tt+=1
-        lh=[]
-        lv=[]
+        lh[0]=[]
+        lv[0]=[]
         for i in range(len(lht[0][0])):
-            lh.append([])
+            lh[0].append([])
         for i in range(len(lvt[0][0])):
-            lv.append([])
-        for i in lh:
+            lv[0].append([])
+        for i in lh[0]:
             for j in range(11):
                 i.append([])
-        for i in lv:
+        for i in lv[0]:
             for j in range(11):
                 i.append([])
-        for i in range(len(lh)):
+        for i in range(len(lh[0])):
             for j in range(11):
                 for k in range(10):
-                    lh[i][j].append(lht[j][k][i])
+                    lh[0][i][j].append(lht[j][k][i])
         for i in range(len(lv)):
             for j in range(11):
                 for k in range(10):
-                    lv[i][j].append(lvt[j][k][i])
+                    lv[0][i][j].append(lvt[j][k][i])
     elif xd<xs and yd>=ys:
         lht=[]
         lvt=[]
@@ -197,24 +197,24 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(10):
                 lv1.append([])
             lvt.append(lv1)
-        for i in lh:
+        for i in lh[1]:
             for j in range(11):
                 for k in range(10):
                     lht[j][k].append(i[j][k])
-        for i in lv:
+        for i in lv[0]:
             for j in range(11):
                 for k in range(10):
                     lvt[j][k].append(i[j][k])
         h1=[]
         v1=[]
-        for i in range(len(lh)):
+        for i in range(len(lh[1])):
             h1.append(i)
-        for i in range(len(lv)):
+        for i in range(len(lv[0])):
             v1.append(i)
         xc=xs
         yc=ys
         dr=[]
-        tt=len(lh)+1
+        tt=len(lh[1])+1
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -332,26 +332,26 @@ def Predict(lh,lv,xs,ys,xd,yd):
             h1.append(tt-1)
             v1.append(tt-1)
             tt+=1
-        lh=[]
-        lv=[]
+        lh[1]=[]
+        lv[0]=[]
         for i in range(len(lht[0][0])):
-            lh.append([])
+            lh[1].append([])
         for i in range(len(lvt[0][0])):
-            lv.append([])
-        for i in lh:
+            lv[0].append([])
+        for i in lh[1]:
             for j in range(11):
                 i.append([])
-        for i in lv:
+        for i in lv[0]:
             for j in range(11):
                 i.append([])
-        for i in range(len(lh)):
+        for i in range(len(lh[1])):
             for j in range(11):
                 for k in range(10):
-                    lh[i][j].append(lht[j][k][i])
-        for i in range(len(lv)):
+                    lh[1][i][j].append(lht[j][k][i])
+        for i in range(len(lv[0])):
             for j in range(11):
                 for k in range(10):
-                    lv[i][j].append(lvt[j][k][i])
+                    lv[0][i][j].append(lvt[j][k][i])
     elif xd>=xs and yd<ys:
         lht=[]
         lvt=[]
@@ -365,24 +365,24 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(10):
                 lv1.append([])
             lvt.append(lv1)
-        for i in lh:
+        for i in lh[0]:
             for j in range(11):
                 for k in range(10):
                     lht[j][k].append(i[j][k])
-        for i in lv:
+        for i in lv[1]:
             for j in range(11):
                 for k in range(10):
                     lvt[j][k].append(i[j][k])
         h1=[]
         v1=[]
-        for i in range(len(lh)):
+        for i in range(len(lh[0])):
             h1.append(i)
-        for i in range(len(lv)):
+        for i in range(len(lv[1])):
             v1.append(i)
         xc=xs
         yc=ys
         dr=[]
-        tt=len(lh)+1
+        tt=len(lh[0])+1
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -500,26 +500,26 @@ def Predict(lh,lv,xs,ys,xd,yd):
             h1.append(tt-1)
             v1.append(tt-1)
             tt+=1
-        lh=[]
-        lv=[]
+        lh[0]=[]
+        lv[1]=[]
         for i in range(len(lht[0][0])):
-            lh.append([])
+            lh[0].append([])
         for i in range(len(lvt[0][0])):
-            lv.append([])
-        for i in lh:
+            lv[1].append([])
+        for i in lh[0]:
             for j in range(11):
                 i.append([])
-        for i in lv:
+        for i in lv[1]:
             for j in range(11):
                 i.append([])
-        for i in range(len(lh)):
+        for i in range(len(lh[0])):
             for j in range(11):
                 for k in range(10):
-                    lh[i][j].append(lht[j][k][i])
-        for i in range(len(lv)):
+                    lh[0][i][j].append(lht[j][k][i])
+        for i in range(len(lv[1])):
             for j in range(11):
                 for k in range(10):
-                    lv[i][j].append(lvt[j][k][i])
+                    lv[1][i][j].append(lvt[j][k][i])
     else:
         lht=[]
         lvt=[]
@@ -533,24 +533,24 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(10):
                 lv1.append([])
             lvt.append(lv1)
-        for i in lh:
+        for i in lh[1]:
             for j in range(11):
                 for k in range(10):
                     lht[j][k].append(i[j][k])
-        for i in lv:
+        for i in lv[1]:
             for j in range(11):
                 for k in range(10):
                     lvt[j][k].append(i[j][k])
         h1=[]
         v1=[]
-        for i in range(len(lh)):
+        for i in range(len(lh[1])):
             h1.append(i)
-        for i in range(len(lv)):
+        for i in range(len(lv[1])):
             v1.append(i)
         xc=xs
         yc=ys
         dr=[]
-        tt=len(lh)+1
+        tt=len(lh[1])+1
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -668,43 +668,59 @@ def Predict(lh,lv,xs,ys,xd,yd):
             h1.append(tt-1)
             v1.append(tt-1)
             tt+=1
-        lh=[]
-        lv=[]
+        lh[1]=[]
+        lv[1]=[]
         for i in range(len(lht[0][0])):
-            lh.append([])
+            lh[1].append([])
         for i in range(len(lvt[0][0])):
-            lv.append([])
-        for i in lh:
+            lv[1].append([])
+        for i in lh[1]:
             for j in range(11):
                 i.append([])
-        for i in lv:
+        for i in lv[1]:
             for j in range(11):
                 i.append([])
-        for i in range(len(lh)):
+        for i in range(len(lh[1])):
             for j in range(11):
                 for k in range(10):
-                    lh[i][j].append(lht[j][k][i])
-        for i in range(len(lv)):
+                    lh[1][i][j].append(lht[j][k][i])
+        for i in range(len(lv[1])):
             for j in range(11):
                 for k in range(10):
-                    lv[i][j].append(lvt[j][k][i])
+                    lv[1][i][j].append(lvt[j][k][i])
 while True:
-    h=[]
-    v=[]
+    h1=[]
+    h2=[]
+    v1=[]
+    v2=[]
     for i in range(11):
         r=[]
         for j in range(9):
-            no=int(input('No. of cars passed in rd. b/w ('+str(j)+','+str(i)+') and ('+str(j+1)+','+str(i)+') in '+str(t)+'th minute: '))
+            no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(i)+') to ('+str(j+1)+','+str(i)+') in '+str(t)+'th minute: '))
             r.append(no)
-        h.append(r)
+        h1.append(r)
+    for i in range(11):
+        r=[]
+        for j in range(9):
+            no=int(input('No. of cars passed in rd. from ('+str(j+1)+','+str(i)+') to ('+str(j)+','+str(i)+') in '+str(t)+'th minute: '))
+            r.append(no)
+        h2.append(r)
     for i in range(11):
         c=[]
         for j in range(9):
-            no=int(input('No. of cars passed in rd. b/w ('+str(i)+','+str(j)+') and ('+str(i)+','+str(j+1)+') in '+str(t)+'th minute: '))
+            no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j)+') to ('+str(i)+','+str(j+1)+') in '+str(t)+'th minute: '))
             c.append(no)
-        v.append(c)
-    lh.append(h)
-    lv.append(v)
+        v1.append(c)
+    for i in range(11):
+        c=[]
+        for j in range(9):
+            no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j+1)+') to ('+str(i)+','+str(j)+') in '+str(t)+'th minute: '))
+            c.append(no)
+        v2.append(c)
+    lh[0].append(h1)
+    lh[1].append(h2)
+    lv[0].append(v1)
+    lv[1].append(v2)
     b=input('Do you want to start your journey? (Y/N) ')
     if b=='Y' or b=='y':
         xs=int(input('Enter abscissa of starting point: '))
