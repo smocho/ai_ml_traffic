@@ -47,6 +47,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
         yc=ys
         dr=[]
         tt=len(lh[0])+1
+        orig=tt
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -129,23 +130,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     if len(dr)==1:
                         if n[i][0]=='1':
                             print('Drive straight to ('+str(xs+1)+','+str(ys)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs+1)+','+str(ys)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs+1)+','+str(ys)+').')
                         if n[i][0]=='2':
                             print('Drive straight to ('+str(xs)+','+str(ys+1)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs)+','+str(ys+1)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs)+','+str(ys+1)+').')
                     else:
                         if n[i][0]=='1':
                             if dr[len(dr)-2]=='1':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='2':
                                 print('Turn right at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc+1)+','+str(yc)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc+1)+','+str(yc)+').')
                         if n[i][0]=='2':
                             if dr[len(dr)-2]=='2':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='1':
                                 print('Turn left at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc)+','+str(yc+1)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc)+','+str(yc+1)+').')
                     if len(dr)==xd+yd-xs-ys:
                         print('You\'ve reached your destination.')
                     if n[i][0]=='1':
@@ -155,11 +156,11 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     break
             for i in range(len(lhc)):
                 for j in range(len(lhc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(j)+','+str(i)+') and ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(i)+') to ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
                     lht[i][j].append(no)
             for i in range(len(lvc)):
                 for j in range(len(lvc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(i)+','+str(j)+') and ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j)+') to ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
@@ -184,6 +185,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(11):
                 for k in range(10):
                     lv[0][i][j].append(lvt[j][k][i])
+        for i in range(xd+yd-xs-ys-1):
+            h=[]
+            v=[]
+            for j in range(11):
+                r=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(k+1)+','+str(j)+') to ('+str(k)+','+str(j)+') in '+str(i+orig)+'th minute: '))
+                    r.append(no)
+                h.append(r)
+            for j in range(11):
+                c=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(k+1)+') to ('+str(j)+','+str(k)+') in '+str(i+orig)+'th minute: '))
+                    c.append(no)
+                v.append(c)
+            lh[1].append(h)
+            lv[1].append(v)
     elif xd<xs and yd>=ys:
         lht=[]
         lvt=[]
@@ -215,6 +233,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
         yc=ys
         dr=[]
         tt=len(lh[1])+1
+        orig=tt
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -297,23 +316,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     if len(dr)==1:
                         if n[i][0]=='1':
                             print('Drive straight to ('+str(xs-1)+','+str(ys)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs-1)+','+str(ys)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs-1)+','+str(ys)+').')
                         if n[i][0]=='2':
                             print('Drive straight to ('+str(xs)+','+str(ys+1)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs)+','+str(ys+1)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs)+','+str(ys+1)+').')
                     else:
                         if n[i][0]=='1':
                             if dr[len(dr)-2]=='1':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='2':
                                 print('Turn left at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc-1)+','+str(yc)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc-1)+','+str(yc)+').')
                         if n[i][0]=='2':
                             if dr[len(dr)-2]=='2':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='1':
                                 print('Turn right at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc)+','+str(yc+1)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc)+','+str(yc+1)+').')
                     if len(dr)==xs+yd-xd-ys:
                         print('You\'ve reached your destination.')
                     if n[i][0]=='1':
@@ -323,11 +342,11 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     break
             for i in range(len(lhc)):
                 for j in range(len(lhc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(j)+','+str(i)+') and ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(j+1)+','+str(i)+') to ('+str(j)+','+str(i)+') in '+str(tt)+'th minute: '))
                     lht[i][j].append(no)
             for i in range(len(lvc)):
                 for j in range(len(lvc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(i)+','+str(j)+') and ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j)+') to ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
@@ -352,6 +371,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(11):
                 for k in range(10):
                     lv[0][i][j].append(lvt[j][k][i])
+        for i in range(xs+yd-xd-ys-1):
+            h=[]
+            v=[]
+            for j in range(11):
+                r=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(k)+','+str(j)+') to ('+str(k+1)+','+str(j)+') in '+str(i+orig)+'th minute: '))
+                    r.append(no)
+                h.append(r)
+            for j in range(11):
+                c=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(k+1)+') to ('+str(j)+','+str(k)+') in '+str(i+orig)+'th minute: '))
+                    c.append(no)
+                v.append(c)
+            lh[0].append(h)
+            lv[1].append(v)
     elif xd>=xs and yd<ys:
         lht=[]
         lvt=[]
@@ -383,6 +419,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
         yc=ys
         dr=[]
         tt=len(lh[0])+1
+        orig=tt
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -465,23 +502,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     if len(dr)==1:
                         if n[i][0]=='1':
                             print('Drive straight to ('+str(xs+1)+','+str(ys)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs+1)+','+str(ys)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs+1)+','+str(ys)+').')
                         if n[i][0]=='2':
                             print('Drive straight to ('+str(xs)+','+str(ys-1)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs)+','+str(ys-1)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs)+','+str(ys-1)+').')
                     else:
                         if n[i][0]=='1':
                             if dr[len(dr)-2]=='1':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='2':
                                 print('Turn left at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc+1)+','+str(yc)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc+1)+','+str(yc)+').')
                         if n[i][0]=='2':
                             if dr[len(dr)-2]=='2':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='1':
                                 print('Turn right at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc)+','+str(yc-1)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc)+','+str(yc-1)+').')
                     if len(dr)==xd+ys-xs-yd:
                         print('You\'ve reached your destination.')
                     if n[i][0]=='1':
@@ -491,11 +528,11 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     break
             for i in range(len(lhc)):
                 for j in range(len(lhc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(j)+','+str(i)+') and ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(i)+') to ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
                     lht[i][j].append(no)
             for i in range(len(lvc)):
                 for j in range(len(lvc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(i)+','+str(j)+') and ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j+1)+') to ('+str(i)+','+str(j)+') in '+str(tt)+'th minute: '))
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
@@ -520,6 +557,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(11):
                 for k in range(10):
                     lv[1][i][j].append(lvt[j][k][i])
+        for i in range(xd+ys-xs-yd-1):
+            h=[]
+            v=[]
+            for j in range(11):
+                r=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(k+1)+','+str(j)+') to ('+str(k)+','+str(j)+') in '+str(i+orig)+'th minute: '))
+                    r.append(no)
+                h.append(r)
+            for j in range(11):
+                c=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(k)+') to ('+str(j)+','+str(k+1)+') in '+str(i+orig)+'th minute: '))
+                    c.append(no)
+                v.append(c)
+            lh[1].append(h)
+            lv[0].append(v)
     else:
         lht=[]
         lvt=[]
@@ -551,6 +605,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
         yc=ys
         dr=[]
         tt=len(lh[1])+1
+        orig=tt
         while xc!=xd and yc!=yd:
             lhc=[]
             lvc=[]
@@ -633,23 +688,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     if len(dr)==1:
                         if n[i][0]=='1':
                             print('Drive straight to ('+str(xs-1)+','+str(ys)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs-1)+','+str(ys)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs-1)+','+str(ys)+').')
                         if n[i][0]=='2':
                             print('Drive straight to ('+str(xs)+','+str(ys-1)+').')
-                            print('You\'re now in rd. b/w ('+str(xs)+','+str(ys)+') and ('+str(xs)+','+str(ys-1)+').')
+                            print('You\'re now in rd. from ('+str(xs)+','+str(ys)+') to ('+str(xs)+','+str(ys-1)+').')
                     else:
                         if n[i][0]=='1':
                             if dr[len(dr)-2]=='1':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='2':
                                 print('Turn right at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc-1)+','+str(yc)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc-1)+','+str(yc)+').')
                         if n[i][0]=='2':
                             if dr[len(dr)-2]=='2':
                                 print('Go straight at the next crossing.')
                             if dr[len(dr)-2]=='1':
                                 print('Turn left at the next crossing.')
-                            print('You\'re now in rd. b/w ('+str(xc)+','+str(yc)+') and ('+str(xc)+','+str(yc-1)+').')
+                            print('You\'re now in rd. from ('+str(xc)+','+str(yc)+') to ('+str(xc)+','+str(yc-1)+').')
                     if len(dr)==xs+ys-xd-yd:
                         print('You\'ve reached your destination.')
                     if n[i][0]=='1':
@@ -659,11 +714,11 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     break
             for i in range(len(lhc)):
                 for j in range(len(lhc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(j)+','+str(i)+') and ('+str(j+1)+','+str(i)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(j+1)+','+str(i)+') to ('+str(j)+','+str(i)+') in '+str(tt)+'th minute: '))
                     lht[i][j].append(no)
             for i in range(len(lvc)):
                 for j in range(len(lvc[i])):
-                    no=int(input('No. of cars passed in rd. b/w ('+str(i)+','+str(j)+') and ('+str(i)+','+str(j+1)+') in '+str(tt)+'th minute: '))
+                    no=int(input('No. of cars passed in rd. from ('+str(i)+','+str(j+1)+') to ('+str(i)+','+str(j)+') in '+str(tt)+'th minute: '))
                     lvt[i][j].append(no)
             h1.append(tt-1)
             v1.append(tt-1)
@@ -688,6 +743,23 @@ def Predict(lh,lv,xs,ys,xd,yd):
             for j in range(11):
                 for k in range(10):
                     lv[1][i][j].append(lvt[j][k][i])
+        for i in range(xs+ys-xd-yd-1):
+            h=[]
+            v=[]
+            for j in range(11):
+                r=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(k)+','+str(j)+') to ('+str(k+1)+','+str(j)+') in '+str(i+orig)+'th minute: '))
+                    r.append(no)
+                h.append(r)
+            for j in range(11):
+                c=[]
+                for k in range(9):
+                    no=int(input('No. of cars passed in rd. from ('+str(j)+','+str(k)+') to ('+str(j)+','+str(k+1)+') in '+str(i+orig)+'th minute: '))
+                    c.append(no)
+                v.append(c)
+            lh[0].append(h)
+            lv[0].append(v)
 while True:
     h1=[]
     h2=[]
