@@ -15,6 +15,24 @@ def Round(f):
             return m.floor(f)
         else:
             return m.ceil(f)
+def Permute(p,q):
+    l=[]
+    for i in range(int(m.pow(10,p+q-1)),int(m.pow(10,p+q))):
+        j=i
+        c1=0
+        c2=0
+        while j!=0:
+            d=j%10
+            if d==1:
+                c1+=1
+            if d==2:
+                c2+=1
+            j=int(j/10)
+        if c1==p and c2==q:
+            l.append(i)
+    for i in range(len(l)):
+        l[i]=str(l[i])
+    return l
 def Predict(lh,lv,xs,ys,xd,yd):
     if xd>=xs and yd>=ys:
         lht=[]
@@ -87,22 +105,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     for k in exp:
                         q.append(Round(k[0]))
                     j+=q
-            n=[]
-            for i in range(int(m.pow(10,r+u-1)),int(m.pow(10,r+u))):
-                j=i
-                c1=0
-                c2=0
-                while j!=0:
-                    d=j%10
-                    if d==1:
-                        c1+=1
-                    if d==2:
-                        c2+=1
-                    j=int(j/10)
-                if c1==r and c2==u:
-                    n.append(i)
-            for i in range(len(n)):
-                n[i]=str(n[i])
+            n=Permute(r,u)
             xct=xc
             yct=yc
             l=[]
@@ -273,22 +276,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     for k in exp:
                         q.append(Round(k[0]))
                     j+=q
-            n=[]
-            for i in range(int(m.pow(10,r+u-1)),int(m.pow(10,r+u))):
-                j=i
-                c1=0
-                c2=0
-                while j!=0:
-                    d=j%10
-                    if d==1:
-                        c1+=1
-                    if d==2:
-                        c2+=1
-                    j=int(j/10)
-                if c1==r and c2==u:
-                    n.append(i)
-            for i in range(len(n)):
-                n[i]=str(n[i])
+            n=Permute(r,u)
             xct=xc
             yct=yc
             l=[]
@@ -459,22 +447,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     for k in exp:
                         q.append(Round(k[0]))
                     j+=q
-            n=[]
-            for i in range(int(m.pow(10,r+u-1)),int(m.pow(10,r+u))):
-                j=i
-                c1=0
-                c2=0
-                while j!=0:
-                    d=j%10
-                    if d==1:
-                        c1+=1
-                    if d==2:
-                        c2+=1
-                    j=int(j/10)
-                if c1==r and c2==u:
-                    n.append(i)
-            for i in range(len(n)):
-                n[i]=str(n[i])
+            n=Permute(r,u)
             xct=xc
             yct=yc
             l=[]
@@ -645,22 +618,7 @@ def Predict(lh,lv,xs,ys,xd,yd):
                     for k in exp:
                         q.append(Round(k[0]))
                     j+=q
-            n=[]
-            for i in range(int(m.pow(10,r+u-1)),int(m.pow(10,r+u))):
-                j=i
-                c1=0
-                c2=0
-                while j!=0:
-                    d=j%10
-                    if d==1:
-                        c1+=1
-                    if d==2:
-                        c2+=1
-                    j=int(j/10)
-                if c1==r and c2==u:
-                    n.append(i)
-            for i in range(len(n)):
-                n[i]=str(n[i])
+            n=Permute(r,u)
             xct=xc
             yct=yc
             l=[]
