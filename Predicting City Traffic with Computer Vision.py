@@ -46,17 +46,17 @@ def Predict(lh,lv,xs,ys,xd,yd):
         for j in range(10):
             lv1.append([])
         lvt.append(lv1)
-    for i in lh[1]:
-        for j in range(11):
-            for k in range(10):
-                lht[j][k].append(i[j][k])
-    for i in lv[1]:
-        for j in range(11):
-            for k in range(10):
-                lvt[j][k].append(i[j][k])
-    h1=[]
-    v1=[]
     if xd>=xs and yd>=ys:
+        for i in lh[0]:
+            for j in range(11):
+                for k in range(10):
+                    lht[j][k].append(i[j][k])
+        for i in lv[0]:
+            for j in range(11):
+                for k in range(10):
+                    lvt[j][k].append(i[j][k])
+        h1=[]
+        v1=[]
         for i in range(len(lh[0])):
             h1.append(i)
         for i in range(len(lv[0])):
@@ -206,6 +206,16 @@ def Predict(lh,lv,xs,ys,xd,yd):
             lh[1].append(h)
             lv[1].append(v)
     elif xd<xs and yd>=ys:
+        for i in lh[1]:
+            for j in range(11):
+                for k in range(10):
+                    lht[j][k].append(i[j][k])
+        for i in lv[0]:
+            for j in range(11):
+                for k in range(10):
+                    lvt[j][k].append(i[j][k])
+        h1=[]
+        v1=[]
         for i in range(len(lh[1])):
             h1.append(i)
         for i in range(len(lv[0])):
@@ -355,6 +365,16 @@ def Predict(lh,lv,xs,ys,xd,yd):
             lh[0].append(h)
             lv[1].append(v)
     elif xd>=xs and yd<ys:
+        for i in lh[0]:
+            for j in range(11):
+                for k in range(10):
+                    lht[j][k].append(i[j][k])
+        for i in lv[1]:
+            for j in range(11):
+                for k in range(10):
+                    lvt[j][k].append(i[j][k])
+        h1=[]
+        v1=[]
         for i in range(len(lh[0])):
             h1.append(i)
         for i in range(len(lv[1])):
@@ -504,6 +524,16 @@ def Predict(lh,lv,xs,ys,xd,yd):
             lh[1].append(h)
             lv[0].append(v)
     else:
+        for i in lh[1]:
+            for j in range(11):
+                for k in range(10):
+                    lht[j][k].append(i[j][k])
+        for i in lv[1]:
+            for j in range(11):
+                for k in range(10):
+                    lvt[j][k].append(i[j][k])
+        h1=[]
+        v1=[]
         for i in range(len(lh[1])):
             h1.append(i)
         for i in range(len(lv[1])):
